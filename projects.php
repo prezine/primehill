@@ -3,8 +3,8 @@
 	include_once './app/connect.php';
 	include_once './app/controllers/Primehill.php';
 	include_once './app/controllers/Database.php';
-	include_once './app/controllers/Product.php';
-	$product = new Products($conn);
+	include_once './app/controllers/Property.php';
+	$property = new Property($conn);
 	if (!isset($_SESSION['userID'])) {
 		header("Location: ./login");
 	}
@@ -123,7 +123,7 @@
 													</thead>
 													<tbody>
 														<?php
-															$allProducts = $product->fetchProducts();
+															$allProducts = $property->fetchProperties();
 				                                    		if ($allProducts != 'null') {
 				                                    			foreach (json_decode($allProducts, true) as $ap) {
 				                                    				echo 
@@ -151,7 +151,7 @@
 																	</tr>';
 				                                    			}
 				                                    		} else {
-				                                    			echo "</tbody></table> <div class='mt-4 text-center text-bold'> No Product found. Add some 🚀 </div>";
+				                                    			echo "</tbody></table> <div class='mt-4 text-center text-bold'> No Properties found. Add some 🚀 </div>";
 				                                    		}
 														?>
 													</tbody>
@@ -174,19 +174,19 @@
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title" id="addModalLabel">Add Project</h5>
+							<h5 class="modal-title" id="addModalLabel">Add Property</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">
-							<form class="form-horizontal" action="./app/models/addproduct" method="post" enctype="multipart/form-data">
+							<form class="form-horizontal" action="./app/models/addproperty" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="useremail">Name of Project</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name of Project">   
+                                    <label for="useremail">Name of Property</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name of Property">   
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="useremail">Project Image</label>
+                                    <label for="useremail">Property Image</label>
                                     <input type="file" class="form-control" id="file" name="file">   
                                 </div>
         
@@ -195,7 +195,7 @@
                                     <select class="form-control" name="category">
                                     	<option>-- Select Categories --</option>
                                     	<?php
-											$allCategories = $product->fetchCategories();
+											$allCategories = $property->fetchCategories();
                                     		if ($allCategories != 'null') {
                                     			foreach (json_decode($allCategories, true) as $ac) {
                                     				echo 

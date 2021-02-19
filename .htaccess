@@ -1,0 +1,24 @@
+# Protect My Directories
+Options -Indexes
+
+# Protect my htaccess file
+<Files .htaccess>
+	order deny,allow
+	deny from all
+</Files>
+
+# Clean Url for User Profiles
+  AddDefaultCharset UTF-8
+  FileETag None
+  Options +FollowSymLinks -MultiViews
+
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^([^.]+)$ $1.php [NC,L]
+
+# php_value session.gc_maxlifetime 604800
+# php_flag display_startup_errors on
+# php_flag display_errors on
+# php_value error_log logs/all_errors.log
+
+# ErrorDocument 404 http://127.0.0.1/scrow/404

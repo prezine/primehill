@@ -115,7 +115,7 @@
 													<p class="text-muted font-weight-medium">Properties</p>
 													<h4 class="mb-0">
 														<?php
-															echo $property->counter('properties');
+															echo $property->counter('Primehill_projects');
 														?>
 													</h4>
 												</div>

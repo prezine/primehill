@@ -27,7 +27,7 @@
 		}
 		public function fetchProperties()
 		{
-			return $this->select("SELECT * FROM properties", true, true);
+			return $this->select("SELECT * FROM Primehill_projects", true, true);
 		}
 		public function fetchProductmage($projectID = '')
 		{
